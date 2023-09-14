@@ -12,6 +12,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { Request, Response } from 'express'; // Import Request and Response
 import { SigninUserDto } from './dto/signin-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+// import { AuthGuard } from '@nestjs/passport';
 
 @Controller('user')
 export class UserController {
@@ -33,6 +34,7 @@ export class UserController {
   }
 
   @Post('update/:id')
+  // @AuthGuard()
   updateUser(@Param('id') id: number, @Body() updateUserDTO: UpdateUserDto) {
     return this.userService.updateuser(updateUserDTO, id);
   }
