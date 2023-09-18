@@ -36,9 +36,12 @@ export class UserService {
       throw new UnauthorizedException('Invalid credentials');
     }
     const payload = { userResult };
-    const accessToken = this.jwtService.sign(payload);
+    const accessToken = this.jwtService.sign(payload, {
+      secret: 'this',
+      algorithm: 'HS256',
+    });
 
-    const signInResponse = { user: userResult, accessToken };
+    const signInResponse = { accessToken };
 
     return signInResponse;
   }
@@ -63,7 +66,6 @@ export class UserService {
     return {
       message: 'User Signed Up Successfully',
       status: HttpStatus.CREATED,
-      data: newUser,
     };
   }
 
