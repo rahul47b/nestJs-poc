@@ -97,4 +97,10 @@ export class UserService {
       status: HttpStatus.OK,
     };
   }
+
+  async getUserById(id: number) {
+    return await this.userRepository.findOne({ where: { id } });
+  }
+
+  async createUser() {}
 }

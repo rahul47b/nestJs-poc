@@ -1,0 +1,20 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  password: String!
+  roles: [String!]
+  permissions: [String!]
+}
+
+type Query {
+  getUser(id: Float!): User!
+}
+
+type Mutation {
+  createUser(name: String!, email: String!): User!
+}

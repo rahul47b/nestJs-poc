@@ -4,6 +4,7 @@ import { UserService } from './user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
+import { UserResolver } from './graphql/user.resolver';
 
 @Module({
   imports: [
@@ -14,12 +15,13 @@ import { JwtModule } from '@nestjs/jwt';
     }),
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, UserResolver],
   exports: [
     JwtModule.register({
       secret: 'this',
       signOptions: { expiresIn: '1h' },
     }),
+    UserService,
   ],
 })
 export class UserModule {}

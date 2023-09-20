@@ -1,13 +1,9 @@
-// src/database/database.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { databaseConfig } from './database.config'; // Import your database configuration
+import { databaseConfig } from './database.config';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(), // You can configure environment variables here
-    TypeOrmModule.forRoot(databaseConfig), // Use the imported databaseConfig
-  ],
+  imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot(databaseConfig)],
 })
 export class DatabaseModule {}
