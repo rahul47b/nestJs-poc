@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
-import { UserResolver } from './graphql/user.resolver';
+import { UserResolver } from '../../graphql/user.resolver';
 
 @Module({
   imports: [
