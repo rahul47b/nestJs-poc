@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { UserResolver } from './user.resolver';
+import { UserModule } from 'src/rest/user/user.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { UserResolver } from './user.resolver';
       autoSchemaFile: join(process.cwd(), 'src/schema/schema.gql'),
       playground: true,
     }),
+    UserModule,
   ],
   providers: [UserResolver],
 })

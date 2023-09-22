@@ -4,8 +4,6 @@ import { UserService } from './user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
-import { UserResolver } from '../../graphql/user.resolver';
-
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
@@ -15,7 +13,7 @@ import { UserResolver } from '../../graphql/user.resolver';
     }),
   ],
   controllers: [UserController],
-  providers: [UserService, UserResolver],
+  providers: [UserService],
   exports: [
     JwtModule.register({
       secret: 'this',

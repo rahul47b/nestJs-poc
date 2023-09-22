@@ -102,5 +102,19 @@ export class UserService {
     return await this.userRepository.findOne({ where: { id } });
   }
 
-  async createUser() {}
+  async createUser(input: CreateUserDto) {
+    const existingUser = await this.userRepository.findOne({
+      where: { email: input.email },
+    });
+    if (existingUser) {
+      throw new ConflictException('User with this email already exists');
+    }
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(input.password, saltRounds);
+    const newUser = this.userRepository.create({
+      ...input,
+      password: hashedPassword,
+    });
+    return await this.userRepository.save(newUser);
+  }
 }

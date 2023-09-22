@@ -1,3 +1,6 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
 
 type User {
   id: ID!
@@ -13,5 +16,13 @@ type Query {
 }
 
 type Mutation {
-  createUser(name: String!, email: String!): User!
+  createUser(input: CreateUserDto!): User!
+}
+
+input CreateUserDto {
+  username: ID!
+  email: String!
+  password: String!
+  roles: [String!]
+  permissions: [String!]
 }
