@@ -13,6 +13,7 @@ type User {
 
 type Query {
   getUser(id: Float!): User!
+  getAllUsers: [User!]!
 }
 
 type Mutation {
@@ -25,4 +26,8 @@ input CreateUserDto {
   password: String!
   roles: [String!]
   permissions: [String!]
+}
+
+type Subscription {
+  createUser(input: CreateUserDto!): User!
 }

@@ -11,6 +11,9 @@ import { UserModule } from 'src/rest/user/user.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema/schema.gql'),
       playground: true,
+      subscriptions: {
+        'graphql-ws': true,
+      },
     }),
     UserModule,
   ],

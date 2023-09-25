@@ -117,4 +117,8 @@ export class UserService {
     });
     return await this.userRepository.save(newUser);
   }
+
+  async allUsers() {
+    return await this.userRepository.find();
+  }
 }
