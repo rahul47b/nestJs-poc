@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
+import { UserResolver } from 'src/graphql/user.resolver';
+
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
@@ -11,15 +13,17 @@ import { JwtModule } from '@nestjs/jwt';
       secret: 'this',
       signOptions: { expiresIn: '1h' },
     }),
+    forwardRef(() => UserModule),
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, UserResolver],
   exports: [
     JwtModule.register({
       secret: 'this',
       signOptions: { expiresIn: '1h' },
     }),
     UserService,
+    UserResolver,
   ],
 })
-export class UserModule {}
+export class UserModule { }

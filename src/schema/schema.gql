@@ -29,5 +29,5 @@ input CreateUserDto {
 }
 
 type Subscription {
-  createUser(input: CreateUserDto!): User!
+  userCreated: User!
 }

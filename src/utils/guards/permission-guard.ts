@@ -28,7 +28,6 @@ export class PermissionsGuard implements CanActivate {
     const decodedUser = this.jwtService.verify(token, {
       secret: 'this',
     });
-
     if (
       !decodedUser ||
       !decodedUser.userResult.roles ||
